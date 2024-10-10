@@ -13,7 +13,7 @@ jobs:
           id: docker-hub
           env:
             username: ${{env.DOCKERHUB_USERNAME}}
-            DOCKER_TOKEN: ${{ secret.DOCKER_TOKEN }}
+            DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
           run: |
             docker login -u $username
         - name: build the docker image
@@ -23,4 +23,4 @@ jobs:
             docker build . -f Dockerfile -t emahdij/tmp-interview:latest
         - name: push the docker image
           id: push-docker-image
-          run: docker push ${{secrets.DOCKERHUB_USERNAME}}/tmp-interview:latest
+          run: docker push emahdij/tmp-interview:latest
