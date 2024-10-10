@@ -13,7 +13,7 @@ jobs:
         - name: login to docker hub
           id: docker-hub
           env:
-            username: ${{env.DOCKERHUB_USERNAME}}
+            username: ${{ vars.DOCKERHUB_USERNAME }}
             DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
           run: |
             echo $username
