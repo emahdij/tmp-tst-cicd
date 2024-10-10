@@ -13,9 +13,9 @@ jobs:
           id: docker-hub
           env:
             username: ${{secrets.DOCKERHUB_USERNAME}}
-            password: ${{secrets.DOCKERHUB_PASSWORD}}
+            DOCKER_TOKEN: ${{ env.DOCKER_TOKEN }}
           run: |
-            docker login -u $username -p $password 
+            echo $DOCKER_TOKEN | docker login -u $username --password-stdin 
         - name: build the docker image
           id: build-docker-image
           run: |
