@@ -15,6 +15,7 @@ jobs:
             username: ${{env.DOCKERHUB_USERNAME}}
             DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
           run: |
+            echo $username
             docker login --username $username
         - name: build the docker image
           id: build-docker-image
